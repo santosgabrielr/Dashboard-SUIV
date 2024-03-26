@@ -5,7 +5,7 @@ const DashboardContent1 = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/dashboard')
+    fetch('http://127.0.0.1:5000/dashboardSuiv')
       .then(response => response.json())
       .then(data => setData(data));
   }, []);

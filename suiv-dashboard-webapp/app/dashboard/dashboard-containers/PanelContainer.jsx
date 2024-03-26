@@ -1,9 +1,9 @@
 import React from 'react';
-import Panel from '../dashboard-components/Panel'
-import DashboardContent1 from '../dashboard-components/DashboardContent1';
-import DashboardContent2 from '../dashboard-components/DashboardContent2';
-import DashboardContent3 from '../dashboard-components/DashboardContent3';
-import DashboardContent4 from '../dashboard-components/DashboardContent4';
+import Panel from '../dashboard-components/Panel.jsx'
+import DashboardContent1 from '../dashboard-components/DashboardContent1.jsx';
+import DashboardContent2 from '../dashboard-components/DashboardContent2.jsx';
+import DashboardContent3 from '../dashboard-components/DashboardContent3.jsx';
+import DashboardContent4 from '../dashboard-components/DashboardContent4.jsx';
 
 const PanelContainer = () => {
   return (
