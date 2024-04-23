@@ -1,23 +1,54 @@
 import { useEffect, useState } from "react";
 
-
 const DashboardContent1 = () => {
-  const [data, setData] = useState(null);
+  const [tableHTML, setTableHTML] = useState(null);
 
   useEffect(() => {
     fetch('http://127.0.0.1:5000/dashboardSuiv')
       .then(response => response.json())
-      .then(data => setData(data));
+      .then(data => {
+        // Converter os dados JSON em HTML de tabela
+        const tableRows = data.map(item => {
+          return `
+            <tr>
+              <td>${item.Rank}</td>
+              <td>${item.Modelo}</td>
+              <td>${item.Versao}</td>
+              <td>${item.Contagem}</td>
+            </tr>
+          `;
+        });
+
+        // montando a tabela HTML
+        const tableHTML = `
+          <table border="1">
+            <thead>
+              <tr>
+                <th>RANK</th>
+                <th>MODELO</th>
+                <th>VERSÃO</th>
+                <th>CONTAGEM</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${tableRows.join('')}
+            </tbody>
+          </table>
+        `;
+
+        // definindo a tabela HTML no estado
+        setTableHTML(tableHTML);
+      });
   }, []);
 
-    return (
-      <div className="DasboardContent-1">
-        <main>
-            <h2>Teste</h2>
-            {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
-        </main>
-      </div>
-    );
-  }
-  
-  export default DashboardContent1;
+  return (
+    <div className="DashboardContent-1">
+      <main>
+        <h2>Veículos mais acessados</h2>
+        {tableHTML && <div dangerouslySetInnerHTML={{ __html: tableHTML }}></div>}
+      </main>
+    </div>
+  );
+}
+
+export default DashboardContent1;
