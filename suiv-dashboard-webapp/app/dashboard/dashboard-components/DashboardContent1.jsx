@@ -7,14 +7,17 @@ const DashboardContent1 = () => {
     fetch('http://127.0.0.1:5000/dashboardSuiv')
       .then(response => response.json())
       .then(data => {
-        // Converter os dados JSON em HTML de tabela
+        // converter os dados JSON em HTML de tabela
         const tableRows = data.map(item => {
           return `
             <tr>
-              <td>${item.Rank}</td>
-              <td>${item.Modelo}</td>
-              <td>${item.Versao}</td>
-              <td>${item.Contagem}</td>
+            <td>${item.POSICAO || ''}</td>
+            <td>${item.MARCA || ''}</td>
+            <td>${item.MODELO || ''}</td>
+            <td>${item.VERSAO || ''}</td>
+            <td>${item.ANO || ''}</td>
+            <td>${item.TIPO || ''}</td>
+            <td>${item.CONTAGEM || ''}</td>
             </tr>
           `;
         });
@@ -24,10 +27,13 @@ const DashboardContent1 = () => {
           <table border="1">
             <thead>
               <tr>
-                <th>RANK</th>
-                <th>MODELO</th>
-                <th>VERSÃO</th>
-                <th>CONTAGEM</th>
+                <th></th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Versão</th>
+                <th>Ano</th>
+                <th>Tipo</th>
+                <th>Consultas</th>
               </tr>
             </thead>
             <tbody>
