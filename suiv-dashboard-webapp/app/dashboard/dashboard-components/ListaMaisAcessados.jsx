@@ -1,23 +1,22 @@
 import { useEffect, useState } from "react";
 
-const DashboardContent1 = () => {
+const ListaMaisAcessados = () => {
   const [tableHTML, setTableHTML] = useState(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:5000/dashboardSuiv')
+    fetch('http://127.0.0.1:5000/maisAcessados')
       .then(response => response.json())
       .then(data => {
         // converter os dados JSON em HTML de tabela
-        const tableRows = data.map(item => {
+        const tableRows = data.map((item, index) => {
           return `
             <tr>
-            <td>${item.POSICAO || ''}</td>
-            <td>${item.MARCA || ''}</td>
-            <td>${item.MODELO || ''}</td>
-            <td>${item.VERSAO || ''}</td>
-            <td>${item.ANO || ''}</td>
-            <td>${item.TIPO || ''}</td>
-            <td>${item.CONTAGEM || ''}</td>
+            <td>${index + 1}</td>
+            <td>${item.Marca || ''}</td>
+            <td>${item.Modelo || ''}</td>
+            <td>${item.Ano || ''}</td>
+            <td>${item.Acessos || ''}</td>
+            <td>${item.PorcentagemTotal || ''}</td>
             </tr>
           `;
         });
@@ -27,13 +26,12 @@ const DashboardContent1 = () => {
           <table border="1">
             <thead>
               <tr>
-                <th></th>
+                <th>Posição</th>
                 <th>Marca</th>
                 <th>Modelo</th>
-                <th>Versão</th>
                 <th>Ano</th>
-                <th>Tipo</th>
-                <th>Consultas</th>
+                <th>Acessos</th>
+                <th>% Total</th>
               </tr>
             </thead>
             <tbody>
@@ -48,13 +46,13 @@ const DashboardContent1 = () => {
   }, []);
 
   return (
-    <div className="DashboardContent-1">
+    <div className="ListaMaisAcessados">
       <main>
-        <h2>Veículos mais acessados</h2>
+        <h2>Acessos por Veículo</h2>
         {tableHTML && <div dangerouslySetInnerHTML={{ __html: tableHTML }}></div>}
       </main>
     </div>
   );
 }
 
-export default DashboardContent1;
+export default ListaMaisAcessados;

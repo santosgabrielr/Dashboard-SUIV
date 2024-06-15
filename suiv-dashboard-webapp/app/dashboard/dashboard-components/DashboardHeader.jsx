@@ -5,7 +5,7 @@ const DashboardHeader = () => {
     <div className='Dashboard-header'>
       <header>
         <img src="/suiv-icon-only.ico" alt='logo-suiv'/>
-        <h1>Dashboard SUIV - Veículos Mais Acessados</h1>
+        <h1>Dashboard SUIV</h1>
       </header>
     </div>
   );

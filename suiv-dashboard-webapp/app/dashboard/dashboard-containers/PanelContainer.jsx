@@ -1,24 +1,24 @@
 import React from 'react';
 import Panel from '../dashboard-components/Panel.jsx'
-import DashboardContent1 from '../dashboard-components/DashboardContent1.jsx';
-import DashboardContent3 from '../dashboard-components/DashboardContent3.jsx';
-import DashboardContent4 from '../dashboard-components/DashboardContent4.jsx';
-import MarcaPieChart from '../dashboard-components/DashboardContent2.jsx';
+import ListaMaisAcessados from '../dashboard-components/ListaMaisAcessados.jsx';
+import GraficoMarcas from '../dashboard-components/GraficoMarcas.jsx';
+import GraficoClientes from '../dashboard-components/GraficoClientes.jsx';
+import GraficoDatas from '../dashboard-components/GraficoDatas.jsx'
 
 const PanelContainer = () => {
   return (
     <div className="panel-container">
       <Panel>
-        <DashboardContent1/>
+        <ListaMaisAcessados/>
       </Panel>
       <Panel>
-        <MarcaPieChart/>
+        <GraficoMarcas/>
       </Panel>
       <Panel>
-        <DashboardContent3/>
+        <GraficoClientes/>
       </Panel>
       <Panel>
-        <DashboardContent4/>
+        <GraficoDatas/>
       </Panel>
     </div>
   );
