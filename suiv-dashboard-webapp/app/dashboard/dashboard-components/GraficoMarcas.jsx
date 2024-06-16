@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const ChartMarcasAcessadas = () => {
   const [chartData, setChartData] = useState({
@@ -13,6 +14,23 @@ const ChartMarcasAcessadas = () => {
     borderWidth: 1
   }]
 });
+
+const options = {
+  plugins: {
+    datalabels: {
+      color: '#FFF',
+      anchor: 'end',
+      align: 'start',
+      offset: -10,
+      font: {
+        weight: 'bold'
+      },
+      formatter: (value) => {
+        return value;
+      }
+    }
+  }
+};
 
   useEffect(() => {
     fetch('http://127.0.0.1:5000/graficoMarcas')
@@ -41,7 +59,7 @@ const ChartMarcasAcessadas = () => {
     <div className="GraficoMarcas">
       <main>
         <h2>Acessos por Marca</h2>
-        < Bar data={chartData} />
+        < Bar data={chartData} options={options} plugins={[ChartDataLabels]}/>
       </main>
     </div>
   );  

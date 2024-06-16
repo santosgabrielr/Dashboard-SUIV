@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 
 const GraficoClientes = () => {
   const [chartData, setChartData] = useState({
@@ -13,6 +15,23 @@ const GraficoClientes = () => {
     borderWidth: 1
   }]
 });
+
+const options = {
+  plugins: {
+    datalabels: {
+      color: '#FFF',
+      anchor: 'end',
+      align: 'start',
+      offset: -10,
+      font: {
+        weight: 'bold'
+      },
+      formatter: (value) => {
+        return value;
+      }
+    }
+  }
+};
 
   useEffect(() => {
     fetch('http://127.0.0.1:5000/graficoClientes')
@@ -41,7 +60,7 @@ const GraficoClientes = () => {
     <div className="GraficoDeClientes">
       <main>
         <h2>Acessos por Cliente</h2>
-        < Bar data={chartData} />
+        < Bar data={chartData} options={options} plugins={[ChartDataLabels]}/>
       </main>
     </div>
   );  

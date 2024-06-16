@@ -73,7 +73,7 @@ def contagemAcessosPorData():
     # agrupa os dados por mês/ano
     contagem_acessos_por_mes = df_maisAcessados.groupby('MesAno').size().reset_index(name='Acessos')
     # ordena os valores pelo número de acessos
-    contagem_acessos_por_mes = contagem_acessos_por_mes.sort_values(by='Acessos', ascending=False)
+    contagem_acessos_por_mes = contagem_acessos_por_mes.sort_values(by='MesAno', ascending=True)
     return jsonify(contagem_acessos_por_mes.to_dict(orient='records'))
 
 
